@@ -4,6 +4,12 @@
 
 Update Time:2021/03/24
 
+## **DISCLAIMERS**
+
+- This project use MIT LICENSE,and does not involve any charging content.  
+
+- The developer's development purpose of this project is only for learning and reference, not for any interest group. If anyone uses this open source project by any means to infringe upon the interests of others or the collective, the original developer will not bear any responsibility.
+
 ## QUICK-START
 
 - Under the "config" folder, open the file called "user.ini" and enter your bilibili Cookie to the parameter called "cookie",this step is **required**.  
@@ -13,6 +19,13 @@ Update Time:2021/03/24
 - Open the terminal in the current directory,enter command "python BiliBulletScreenCrawlers.py", and wait for the data crawling and the files generation.
 
 ___
+
+## **免责声明**
+
+- 本项目使用MIT协议，不涉及任何收费内容  
+  
+- 本项目开发者开发目的仅供学习和参考，不针对任何利益集团，若存在任何人以任何手段使用本开源项目侵害其他人或集体利益，原开发者不承担任何责任。
+
 ## 快速上手
 
 - 打开在config目录下的user.ini,在cookie参数项中输入你的哔哩哔哩Cookie，这一步是必须的。  
@@ -21,3 +34,4 @@ ___
 
 - 在当前目录下打开终端，使用"python BiliBulletScreenCrawlers.py"命令运行程序，等待数据爬取和文件生成。
 
+___
