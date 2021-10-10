@@ -8,6 +8,7 @@ from distutils.util import strtobool
 
 import jsonpath
 import requests
+import urllib3
 from dateutil.relativedelta import relativedelta
 from google.protobuf.json_format import MessageToJson
 
@@ -60,6 +61,7 @@ class Config:
             "origin": "https://www.bilibili.com",
             "referer": f"https://www.bilibili.com/video/{bv}",
             "user-agent": str(user_agent),
+            "Connection": "close",
         }
         response = requests.get(url=f"https://api.bilibili.com/x/player/pagelist?bvid={bv}&jsonp=jsonp")
         oid = response.json()["data"][0]["cid"]
@@ -115,8 +117,9 @@ class Config:
 
 
 def get_response(html_url):
+    urllib3.disable_warnings()
     headers = Config.headers
-    response = requests.get(url=html_url, headers=headers)
+    response = requests.get(url=html_url, headers=headers, stream=True, verify=False)
     try:
         if str(response.json()["code"]) == "-509":
             print("\033[1;31;40m 请求过于频繁，请稍后再试 \033[0m")
@@ -167,23 +170,28 @@ def date_end_clear(dates):
 
 def get_date(html_url, loop, max_loop):
     response = get_response(html_url)
-    if response.json()["code"] == "-509":
+    if response.json()["code"] == -101:
+        print("\033[1;31;47m 当前Cookie账号未登录 \033[0m")
+        Config.loop_flag = False
+    elif response.json()["code"] == -509:
         print("\033[1;31;47m 请求过于频繁，请稍后再试 \033[0m")
         Config.loop_flag = False
-    dates_clear = response.json()["data"]
-    if dates_clear is None:
-        Config.loop_flag = False
-    if loop == 1 and dates_clear is not None:
-        Config.loop_flag = True
-        dates_clear = date_begin_clear(dates_clear)
-    if (loop == (max_loop + 1) or (max_loop == 0)) and dates_clear is not None:
-        if Config.date_debug_switch:
-            print("\n")
-        dates_clear = date_end_clear(dates_clear)
+    elif response.json()["code"] == 0:
+        dates_clear = response.json()["data"]
+        if dates_clear is None:
+            Config.loop_flag = False
+        if loop == 1 and dates_clear is not None:
+            Config.loop_flag = True
+            dates_clear = date_begin_clear(dates_clear)
+        if (loop == (max_loop + 1) or (max_loop == 0)) and dates_clear is not None:
+            if Config.date_debug_switch:
+                print("\n")
+            dates_clear = date_end_clear(dates_clear)
+        return dates_clear
     else:
         pass
 
-    return dates_clear
+
 
 
 def main(html_url, loop, max_loop):

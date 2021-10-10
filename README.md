@@ -2,13 +2,15 @@
 
 *A bilibili bulletscreen crawiers(Cookie required)*
 
-Update Time:2021/03/24
+Upgrade Time:2021/10/11 4:43 a.m.
 
 ## **DISCLAIMERS**
 
 - This project use MIT LICENSE,and does not involve any charging content.  
 
-- The developer's development purpose of this project is only for learning and reference, not for any interest group. If anyone uses this open source project by any means to infringe upon the interests of others or the collective, the original developer will not bear any responsibility.
+- The developer's development purpose of this project is only for learning and reference, not for any interest group. If anyone uses this open source project by any means to infringe upon the interests of others or the collective, the original developer will not bear any responsibility.  
+
+- Although this project has designed the delayed access function, there is still certain the risk of IP blocked. The user needs to bear the risk. If there is any loss, the original developer will not bear any responsibility.
 
 ## QUICK-START
 
@@ -16,15 +18,17 @@ Update Time:2021/03/24
   
 - In "user.ini",enter the BV code of the video you want to operate to the parameter called "bv".  
 
-- Open the terminal in the current directory,enter command "python BiliBulletScreenCrawlers.py", and wait for the data crawling and the files generation.
+- Open the terminal in the current directory,first enter command "pip3 install -r requirements.txt" to deploy the dependent environment,then enter command "python BiliBulletScreenCrawlers.py",and wait for the data crawling and the files generation.
 
 ___
 
 ## **免责声明**
 
-- 本项目使用MIT协议，不涉及任何收费内容  
+- 本项目使用MIT协议，不涉及任何收费内容。  
   
 - 本项目开发者开发目的仅供学习和参考，不针对任何利益集团，若存在任何人以任何手段使用本开源项目侵害其他人或集体利益，原开发者不承担任何责任。
+
+- 虽然本项目设计了延时访问功能，但仍有一定程度ip被ban的风险，使用者需要自行承担风险，如有损失，原开发者不承担任何责任。
 
 ## 快速上手
 
@@ -32,6 +36,6 @@ ___
 
 - 将你要操作的视频的BV号输入到bv参数项中。
 
-- 在当前目录下打开终端，使用"python BiliBulletScreenCrawlers.py"命令运行程序，等待数据爬取和文件生成。
+- 在当前目录下打开终端，先使用"pip install -r requirements.txt"部署依赖环境，再使用"python BiliBulletScreenCrawlers.py"命令运行程序，等待数据爬取和文件生成。
 
 ___
